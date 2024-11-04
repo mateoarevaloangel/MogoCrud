@@ -19,11 +19,13 @@ namespace MongoApi.Controllers
     {
         private readonly DBContext _dbContext;
         //private readonly LoginService _loginService;
+        private IConfiguration _configuration; 
 
-        public LoginController(DBContext dbContext)//, LoginService loginService)
+        public LoginController(DBContext dbContext, IConfiguration configuration)//, LoginService loginService)
         {
             //this._loginService = loginService;
             this._dbContext = dbContext;
+            this._configuration = configuration;
         }
 
         [HttpPost("authenticate")]
@@ -35,18 +37,28 @@ namespace MongoApi.Controllers
                 return BadRequest(new { message = "credenciales invalidas"});
             }
             //Generar token
+            string token = GenerateToeken(user);
 
-            return Ok(new { message = "some value" }); ;//Ok();
+            return Ok(new { token = token }); ;//Ok();
         }
-
+        //metodo para generar token
         private string GenerateToeken(UserModel user) 
         {
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Email, user.Email)
-            }
-            var key = new SymmetricSecurityKey
+            };
+            //obtengo el key para encriptar
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("JWT:KEY").Value));
+            var creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha512);
+            var securityToken = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(60),
+                signingCredentials: creds
+                );
+            string token = new JwtSecurityTokenHandler().WriteToken(securityToken);
+            return token;
         }
 
     }

@@ -8777,11 +8777,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danie\\source\\repos\\MongoApi\\MongoApi.csproj",
+      "projectUniqueName": "C:\\Users\\danie\\OneDrive\\Documentos\\GitHub\\MogoCrud\\MongoApi.csproj",
       "projectName": "MongoApi",
-      "projectPath": "C:\\Users\\danie\\source\\repos\\MongoApi\\MongoApi.csproj",
+      "projectPath": "C:\\Users\\danie\\OneDrive\\Documentos\\GitHub\\MogoCrud\\MongoApi.csproj",
       "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danie\\source\\repos\\MongoApi\\obj\\",
+      "outputPath": "C:\\Users\\danie\\OneDrive\\Documentos\\GitHub\\MogoCrud\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8878,7 +8878,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
